@@ -1,11 +1,10 @@
 {
   "name": "mongo",
   "version": "1.0.0",
-  "description": "",
   "main": "mongo.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +15,8 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.2.2",
-    "mongoose": "^5.5.1",
+    "mongoose": "^5.5.6",
     "validator": "^10.11.0"
   }
+ 
 }

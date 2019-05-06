@@ -9,7 +9,6 @@ if (process.env.SECRET) {
   const { secret } = require("../config.js");
   var secretProduction = secret;
 }
-
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -122,4 +121,3 @@ userSchema.pre('save', function(next) {
 const User = mongoose.model('User', userSchema)
 
 module.exports = User
-
