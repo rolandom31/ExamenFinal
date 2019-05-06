@@ -4,11 +4,11 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 if (process.env.SECRET) {
-  var secretP = process.env.SECRET;
+  var secretProduction = process.env.SECRET;
 } else {
   const { secret } = require("../config.js");
-  var secretP = secret;
-} 
+  var secretProduction = secret;
+}
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -93,7 +93,7 @@ userSchema.statics.findByCredentials = function(email, password) {
 
 userSchema.methods.generateToken = function() {
   const user = this
-  const token = jwt.sign({ _id: user._id.toString() }, secret, { expiresIn: '7 days'})
+  const token = jwt.sign({ _id: user._id.toString() }, secretProduction, { expiresIn: '7 days'})
   user.tokens = user.tokens.concat({ token })
   return new Promise(function( resolve, reject) {
     user.save().then(function(user){
@@ -121,4 +121,3 @@ userSchema.pre('save', function(next) {
 const User = mongoose.model('User', userSchema)
 
 module.exports = User
-
